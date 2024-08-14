@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from database import get_db
 from sqlalchemy.orm import Session
 import models, schemas
-
+#informacion para poder subir un commit :)
 # Cargar las variables de entorno
 load_dotenv()
 
