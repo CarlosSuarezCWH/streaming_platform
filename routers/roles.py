@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 import schemas, models, database
 from utils.auth import get_current_user, verify_role
-
+#info de commit
 router = APIRouter()
 
 @router.post("/assign-role", response_model=schemas.User)
@@ -13,7 +13,7 @@ def assign_role_to_user(
     current_user: schemas.User = Depends(get_current_user)
 ):
     # Solo los superusuarios pueden asignar roles
-    verify_role(current_user.roles, "superuser")
+    verify_role(current_user.roles, "admin")
     
     user = db.query(models.User).filter(models.User.id == user_id).first()
     role = db.query(models.Role).filter(models.Role.name == role_name).first()
@@ -29,7 +29,7 @@ def assign_role_to_user(
 
 @router.post("/remove-role", response_model=schemas.User)
 def remove_role_from_user(user_id: int, role_name: str, db: Session = Depends(database.get_db), current_user: schemas.User = Depends(get_current_user)):
-    verify_role(current_user.roles, "superuser")
+    verify_role(current_user.roles, "admin")
     
     user = db.query(models.User).filter(models.User.id == user_id).first()
     role = db.query(models.Role).filter(models.Role.name == role_name).first()

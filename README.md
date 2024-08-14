@@ -32,6 +32,17 @@ La API utiliza tokens JWT para autenticar a los usuarios y asegurar las rutas. C
 
 Cuando un usuario se autentica correctamente, se genera un token JWT que incluye información relevante como el identificador del usuario y sus roles.
 
+### Definición de Roles
+
+- **Archivo**: `models.py`
+- **Modelo**: `Role`
+- **Relación**: Los roles están relacionados con los usuarios a través de una tabla de asociación `user_roles`.
+
+### Asignación y Verificación de Roles
+
+- **Asignación de Roles**: Los roles pueden ser asignados a los usuarios mediante el endpoint `/assign-role` en el archivo `routers/roles.py`.
+- **Verificación de Roles**: Antes de acceder a ciertas rutas, se verifica que el usuario tenga el rol adecuado utilizando la función `verify_role` definida en `utils/auth.py`.
+
 
 ## Documentación de la API
 

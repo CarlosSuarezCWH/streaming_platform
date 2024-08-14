@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, T
 from sqlalchemy.orm import relationship
 from database import Base
 from datetime import datetime
-
+#info de roles
 user_roles = Table(
     'user_roles',
     Base.metadata,
